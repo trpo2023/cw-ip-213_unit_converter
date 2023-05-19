@@ -12,3 +12,44 @@ mm 1e-3
 um 1e-6
 nm 1e-9
 #length
+km^2 1e6
+gec 1e4
+m^2 1
+cm^2 1e-4
+mm^2 1e-6
+#area
+gl 1e9
+mgl 1e6
+m^3 1e3
+l 1
+sm^3 1e-3
+ml 1e-3
+#volume
+km/h 1
+km/m 60
+m/m 60e-3
+m/s 3.6
+#speed
+rub 1
+usd 79.91
+eur 86.28
+cny 11.37
+gbp 99.16
+chf 88.48
+btc 2163168
+#currency
+year 31449600
+week 604800
+day 86400
+hour 3600
+min 60
+sec 1
+#time
+ghz 1e9
+mhz 1e6
+khz 1e3
+hz 1
+mlhz 1e-3
+#frequency
+
+
