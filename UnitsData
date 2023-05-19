@@ -3,6 +3,7 @@ ton 1e3
 kg 1
 g 1e-3
 mg 1e-6
+#weight
 mile 1.60934e3
 km 1e3
 m 1
@@ -10,3 +11,4 @@ cm 1e-2
 mm 1e-3
 um 1e-6
 nm 1e-9
+#length
