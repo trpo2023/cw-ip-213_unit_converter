@@ -43,13 +43,11 @@ int main()
 
             if (!(strncmp(HAVEunit, str, struLength))
                 && struLength == uHLength) {
-                printf("1");
                 result *= strtod(strchr(str, ' '), NULL);
             }
 
             if (!(strncmp(WANTunit, str, struLength))
                 && struLength == uWLength) {
-                printf("2");
                 result /= strtod(strchr(str, ' '), NULL);
             }
         }
