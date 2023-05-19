@@ -1,19 +1,15 @@
 #include <stdio.h>
 #include <string>
-#include <string.h>
-#include <stdlib.h>
-#include <cctype>
+#include <conversion.h>
 
 #define MAX_LENGTH 25
 
 int main()
 {
     char input[MAX_LENGTH];
-    char str[100];
     char HAVEunit[7];
     char WANTunit[7];
     char* ptrEnd;
-    int struLength = 0;
     int uHLength = -1;
     int uWLength = 0;
     double result = 0;
@@ -36,21 +32,7 @@ int main()
         for (int i = 1; WANTunit[i] != '\0'; i++)
             uWLength++;
 
-        while (fgets(str, 100, units)) {
-            struLength = 0;
-            for (int i = 0; str[i] != ' '; i++)
-                struLength++;
-
-            if (!(strncmp(HAVEunit, str, struLength))
-                && struLength == uHLength) {
-                result *= strtod(strchr(str, ' '), NULL);
-            }
-
-            if (!(strncmp(WANTunit, str, struLength))
-                && struLength == uWLength) {
-                result /= strtod(strchr(str, ' '), NULL);
-            }
-        }
+        result = Convert(units, HAVEunit, uHLength, WANTunit, uWLength, result);
         fseek(units, 0, SEEK_END);
         rewind(units);
         printf("\t* %f\n", result);
