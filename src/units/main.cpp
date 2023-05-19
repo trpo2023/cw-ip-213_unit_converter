@@ -33,7 +33,6 @@ int main()
             uWLength++;
 
         result = Convert(units, HAVEunit, uHLength, WANTunit, uWLength, result);
-        fseek(units, 0, SEEK_END);
         rewind(units);
         printf("\t* %f\n", result);
         for (int i = 0; i < 7; i++) {
