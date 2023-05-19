@@ -13,7 +13,8 @@ int main()
     char HAVEunit[7];
     char WANTunit[7];
     char* ptrEnd;
-    int uHLength = 0;
+    int struLength = 0;
+    int uHLength = -1;
     int uWLength = 0;
     double result = 0;
 
@@ -22,30 +23,45 @@ int main()
         printf("Error: incorrect file path\n");
         return 1;
     }
-
-    printf("You have: ");
-    fgets(input, MAX_LENGTH, stdin);
-    result = strtod(input, &ptrEnd);
-    for (int i = 1; *(ptrEnd + i) != '\0'; i++) {
-        HAVEunit[i - 1] = *(ptrEnd + i);
-        uHLength++;
-    }
-    ptrEnd = 0;
-    printf("You want: ");
-    fgets(WANTunit, 7, stdin);
-
-    for (int i = 1; WANTunit[i] != '\0'; i++)
-        uWLength++;
-
-    while (fgets(str, 100, units)) {
-        if (!(strncmp(HAVEunit, str, uHLength - 1))) {
-            result *= strtod(strchr(str, ' '), NULL);
+    while (1) {
+        printf("You have: ");
+        fgets(input, MAX_LENGTH, stdin);
+        result = strtod(input, &ptrEnd);
+        for (int i = 1; *(ptrEnd + i) != '\0'; i++) {
+            HAVEunit[i - 1] = *(ptrEnd + i);
+            uHLength++;
         }
+        printf("You want: ");
+        fgets(WANTunit, 7, stdin);
+        for (int i = 1; WANTunit[i] != '\0'; i++)
+            uWLength++;
 
-        if (!(strncmp(WANTunit, str, uWLength)))
-            result /= strtod(strchr(str, ' '), NULL);
+        while (fgets(str, 100, units)) {
+            struLength = 0;
+            for (int i = 0; str[i] != ' '; i++)
+                struLength++;
+
+            if (!(strncmp(HAVEunit, str, struLength))
+                && struLength == uHLength) {
+                printf("1");
+                result *= strtod(strchr(str, ' '), NULL);
+            }
+
+            if (!(strncmp(WANTunit, str, struLength))
+                && struLength == uWLength) {
+                printf("2");
+                result /= strtod(strchr(str, ' '), NULL);
+            }
+        }
+        fseek(units, 0, SEEK_END);
+        rewind(units);
+        printf("\t* %f\n", result);
+        for (int i = 0; i < 7; i++) {
+            HAVEunit[i] = ' ';
+            WANTunit[i] = ' ';
+        }
+        uWLength = 0;
+        uHLength = -1;
     }
-    printf("\t* %f\n", result);
-
     return 0;
 }
