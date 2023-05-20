@@ -24,12 +24,6 @@ int main()
     int uWLength = 0;
     double result = 0;
 
-    FILE* units = fopen("UnitsData", "r");
-    if (units == NULL) {
-        printf("Error: incorrect file path\n");
-        return 1;
-    }
-
     while (1) {
         printf("You have: ");
         fgets(input, MAX_LENGTH, stdin);
@@ -43,15 +37,7 @@ int main()
         fgets(WANTunit, 7, stdin);
         for (int i = 1; WANTunit[i] != '\0'; i++)
             uWLength++;
-
-        rewind(units);
-        /*  if (strcmp(HAVEunitName, WANTunitName) != 0) {
-             printf("Different values ​​are compared, the result may not be
-         " "correct!\n"); printf("You are trying to compare %s with %s!\n",
-                    HAVEunitName,
-                    WANTunitName);
-         } */
-        result = Convert(units, HAVEunit, uHLength, WANTunit, uWLength, result);
+        result = Convert(HAVEunit, uHLength, WANTunit, uWLength, result);
         printf("\t* %f\n", result);
         for (int i = 0; i < 7; i++) {
             HAVEunit[i] = ' ';

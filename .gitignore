@@ -1,2 +1,3 @@
 bin/units
-obj/*o
+obj/*.o
+obj/test/*.o

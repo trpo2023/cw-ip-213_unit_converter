@@ -1,6 +1,5 @@
 double
-Convert(FILE* units,
-        char* HAVEunit,
+Convert(char* HAVEunit,
         int uHLength,
         char* WANTunit,
         int uWLength,
