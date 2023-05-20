@@ -29,7 +29,14 @@ int main()
     while (1) {
         printf("You have: ");
         fgets(input, MAX_LENGTH, stdin);
+
+        if (Chek_number(input))
+            continue;
+
         result = strtod(input, &ptrEnd);
+
+        if (Chek_space(input))
+            continue;
 
         for (int i = 1; *(ptrEnd + i) != '\0'; i++) {
             HAVEunit[i - 1] = *(ptrEnd + i);
@@ -42,7 +49,6 @@ int main()
 
         rewind(units);
         result = Convert(units, HAVEunit, uHLength, WANTunit, uWLength, result);
-        printf("\t* %f\n", result);
         Chek_Units_Name(HAVEunit, uHLength, WANTunit, uWLength, result);
         printf("\t* %f\n", result);
         for (int i = 0; i < 7; i++) {

@@ -4,5 +4,6 @@ void Chek_Units_Name(
         char* WANTunit,
         int uWLength,
         double result);
-//void Chek_Input();
+bool Chek_space(char* input);
+bool Chek_number(char* input);
 // void Chek_WANTunit();

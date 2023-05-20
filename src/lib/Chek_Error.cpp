@@ -58,4 +58,21 @@ void Chek_Units_Name(
     }
 }
 
+bool Chek_space(char* input)
+{
+    char* ptrEnd;
+    strtod(input, &ptrEnd);
+    if (*ptrEnd != ' ') {
+        printf("Error: a space was expected after the number!\n");
+        return 1;
+    }
+    return 0;
+}
 
+bool Chek_number(char* input)
+{
+    if ((input[0] >= '0') && (input[0] <= '9'))
+        return 0;
+    printf("Error: number expected first!\n");
+    return 1;
+}
