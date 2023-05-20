@@ -5,13 +5,9 @@
 #include <cctype>
 #include <iostream>
 #include <conversion.h>
+#include <Chek_Error.h>
 
 #define MAX_LENGTH 25
-
-/*void ChekErorr(char input)
-{
-
-}*/
 
 int main()
 {
@@ -45,13 +41,9 @@ int main()
             uWLength++;
 
         rewind(units);
-        /*  if (strcmp(HAVEunitName, WANTunitName) != 0) {
-             printf("Different values ​​are compared, the result may not be
-         " "correct!\n"); printf("You are trying to compare %s with %s!\n",
-                    HAVEunitName,
-                    WANTunitName);
-         } */
         result = Convert(units, HAVEunit, uHLength, WANTunit, uWLength, result);
+        printf("\t* %f\n", result);
+        Chek_Units_Name(HAVEunit, uHLength, WANTunit, uWLength, result);
         printf("\t* %f\n", result);
         for (int i = 0; i < 7; i++) {
             HAVEunit[i] = ' ';
