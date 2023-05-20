@@ -28,4 +28,5 @@ obj/test/test.o: test/parser_test.cpp
 clean:
 	rm bin/units -f
 	rm obj/*.o -f
+	rm obj/test/*.o -f
 	rm bin/test -f
