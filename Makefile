@@ -24,7 +24,6 @@ obj/test/main.o: test/main.cpp
 obj/test/test.o: test/parser_test.cpp
 		g++ -c $(CFLAGS) $< -o $@ -I thirdparty -I src/lib
 
-
 clean:
 	rm bin/units -f
 	rm obj/*.o -f
