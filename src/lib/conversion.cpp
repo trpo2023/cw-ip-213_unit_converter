@@ -25,7 +25,16 @@ Convert(char* HAVEunit,
         int struLength = 0;
         for (int i = 0; str[i] != ' '; i++)
             struLength++;
+        if (!(strncmp(HAVEunit, str, struLength)) && struLength == uHLength)
+            result *= strtod(strchr(str, ' '), NULL);
+        if (!(strncmp(WANTunit, str, struLength)) && struLength == uWLength)
+            result /= strtod(strchr(str, ' '), NULL);
+    }
 
+    while (fgets(str, 30, units)) {
+        int struLength = 0;
+        for (int i = 0; str[i] != ' '; i++)
+            struLength++;
         if (!(strncmp(HAVEunit, str, struLength)) && struLength == uHLength) {
             result *= strtod(strchr(str, ' '), NULL);
             if (str[0] == '#') {
@@ -37,7 +46,12 @@ Convert(char* HAVEunit,
                 break;
             }
         }
+    }
 
+    while (fgets(str, 30, units)) {
+        int struLength = 0;
+        for (int i = 0; str[i] != ' '; i++)
+            struLength++;
         if (!(strncmp(WANTunit, str, struLength)) && struLength == uWLength) {
             result /= strtod(strchr(str, ' '), NULL);
             if (str[0] == '#') {
