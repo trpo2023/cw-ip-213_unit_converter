@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -23,14 +24,19 @@ void Chek_Units_Name(
             while (fgets(str, 30, units))
                 if (str[0] == '#') {
                     strcpy(HAVEunitName, str);
-                    i = 0;
                     while (HAVEunitName[i] != '\n')
                         i++;
                     HAVEunitName[i] = '\0';
                     break;
                 }
+            break;
         }
     }
+    if (i == 0) {
+        printf("Error: required unit not found!(You have)\n");
+        return;
+    }
+    i = 0;
     units = fopen("UnitsData", "r");
     while (fgets(str, 30, units)) {
         int struLength = 0;
@@ -41,13 +47,16 @@ void Chek_Units_Name(
             while (fgets(str, 30, units))
                 if (str[0] == '#') {
                     strcpy(WANTunitName, str);
-                    i = 0;
                     while (WANTunitName[i] != '\n')
                         i++;
                     WANTunitName[i] = '\0';
                     break;
                 }
         }
+    }
+    if (i == 0) {
+        printf("Error: required unit not found!(You want)\n");
+        return;
     }
     if (strcmp(HAVEunitName, WANTunitName) != 0) {
         printf("Error: different values ​​are compared, the result may not "

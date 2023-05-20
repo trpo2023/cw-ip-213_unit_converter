@@ -6,4 +6,3 @@ void Chek_Units_Name(
         double result);
 bool Chek_space(char* input);
 bool Chek_number(char* input);
-// void Chek_WANTunit();
