@@ -1,3 +1,4 @@
 bin/units
-obj/*.o
-obj/test/*.o
+bin/test
+obj/
+obj/test/
