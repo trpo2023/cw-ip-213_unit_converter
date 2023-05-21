@@ -2,7 +2,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: bin/units
 
-bin/units: obj/main.o obj/conversion.o obj/Chek_Error.o
+bin/units: obj/main.o obj/conversion.o obj/Check_Error.o
 	g++ $(CFLAGS) -o $@ $^
 
 obj/main.o: src/units/main.cpp
@@ -11,7 +11,7 @@ obj/main.o: src/units/main.cpp
 obj/conversion.o: src/lib/conversion.cpp
 	g++ -c $(CFLAGS) $< -o $@
 
-obj/Chek_Error.o: src/lib/Chek_Error.cpp
+obj/Chek_Error.o: src/lib/Check_Error.cpp
 	g++ -c $(CFLAGS) $< -o $@
 
 clean:
