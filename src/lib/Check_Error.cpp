@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-void Chek_Units_Name(
+int Check_Units_Name(
         char* HAVEunit,
         int uHLength,
         char* WANTunit,
@@ -33,8 +33,7 @@ void Chek_Units_Name(
         }
     }
     if (i == 0) {
-        printf("Error: required unit not found!(You have)\n");
-        return;
+        return 1;
     }
     i = 0;
     units = fopen("UnitsData", "r");
@@ -55,33 +54,27 @@ void Chek_Units_Name(
         }
     }
     if (i == 0) {
-        printf("Error: required unit not found!(You want)\n");
-        return;
+        return 2;
     }
     if (strcmp(HAVEunitName, WANTunitName) != 0) {
-        printf("Error: different values ​​are compared, the result may not "
-               "be correct!\n");
-        printf("Error: you are trying to compare %s with %s!\n",
-               HAVEunitName + 1,
-               WANTunitName + 1);
-    }
-}
-
-bool Chek_space(char* input)
-{
-    char* ptrEnd;
-    strtod(input, &ptrEnd);
-    if (*ptrEnd != ' ') {
-        printf("Error: a space was expected after the number!\n");
-        return 1;
+        return 3;
     }
     return 0;
 }
 
-bool Chek_number(char* input)
+int Check_space(char* input)
+{
+    char* ptrEnd;
+    strtod(input, &ptrEnd);
+    if (*ptrEnd != ' ') {
+        return 4;
+    }
+    return 0;
+}
+
+int Check_number(char* input)
 {
     if ((input[0] >= '0') && (input[0] <= '9'))
         return 0;
-    printf("Error: number expected first!\n");
-    return 1;
+    return 5;
 }

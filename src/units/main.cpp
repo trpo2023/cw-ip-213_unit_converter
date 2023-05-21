@@ -6,6 +6,7 @@
 #include <iostream>
 #include <conversion.h>
 #include <Check_Error.h>
+#include <Print_Error.h>
 
 #define MAX_LENGTH 25
 
@@ -24,13 +25,11 @@ int main()
         printf("You have: ");
         fgets(input, MAX_LENGTH, stdin);
 
-        if (Chek_number(input))
-            continue;
+        Print_Error(Check_number(input));
 
         result = strtod(input, &ptrEnd);
 
-        if (Chek_space(input))
-            continue;
+        Print_Error(Check_space(input));
 
         for (int i = 1; *(ptrEnd + i) != '\0'; i++) {
             HAVEunit[i - 1] = *(ptrEnd + i);
@@ -42,7 +41,8 @@ int main()
             uWLength++;
 
         result = Convert(HAVEunit, uHLength, WANTunit, uWLength, result);
-        Chek_Units_Name(HAVEunit, uHLength, WANTunit, uWLength, result);
+        Print_Error(Check_Units_Name(
+                HAVEunit, uHLength, WANTunit, uWLength, result));
         printf("\t* %f\n", result);
         for (int i = 0; i < 7; i++) {
             HAVEunit[i] = ' ';
