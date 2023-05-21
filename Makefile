@@ -21,7 +21,7 @@ obj/Print_Error.o: src/lib/Print_Error.cpp
 
 .PHONY: clean
 
-bin/test: obj/test/main.o  obj/test/test.o obj/conversion.o
+bin/test: obj/test/main.o  obj/test/test.o obj/conversion.o obj/Check_Error.o
 	g++ $(CFLAGS) -o $@ $^ -I src/lib
 
 obj/test/main.o: test/main.cpp

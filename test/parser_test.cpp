@@ -1,6 +1,7 @@
 #include "ctest.h"
 #include <string.h>
 #include <conversion.h>
+#include <Check_Error.h>
 
 CTEST(convert, t1)
 {
@@ -53,5 +54,66 @@ CTEST(convert, t6)
     char WANTunit[7] = "sec";
     const double expected = 3600;
     const double real = Convert(HAVEunit, 4, WANTunit, 1, 1);
+    ASSERT_EQUAL(expected, real);
+}
+
+CTEST(CheckError, t7)
+{
+    char HAVEunit[7] = "hour";
+    char WANTunit[7] = "sec";
+    const int expected = 0;
+    const int real = Check_Units_Name(HAVEunit, 4, WANTunit, 3, 1);
+    ASSERT_EQUAL(expected, real);
+}
+
+CTEST(CheckError, t8)
+{
+    char HAVEunit[7] = "hur";
+    char WANTunit[7] = "sec";
+    const int expected = 1;
+    const int real = Check_Units_Name(HAVEunit, 3, WANTunit, 3, 1);
+    ASSERT_EQUAL(expected, real);
+}
+
+CTEST(CheckError, t9)
+{
+    char HAVEunit[7] = "hour";
+    char WANTunit[7] = "s";
+    const int expected = 2;
+    const int real = Check_Units_Name(HAVEunit, 4, WANTunit, 1, 1);
+    ASSERT_EQUAL(expected, real);
+}
+
+CTEST(CheckError, t10)
+{
+    char HAVEunit[7] = "hour";
+    char WANTunit[7] = "kg";
+    const int expected = 3;
+    const int real = Check_Units_Name(HAVEunit, 4, WANTunit, 2, 1);
+    ASSERT_EQUAL(expected, real);
+}
+
+CTEST(CheckError, t11)
+{
+    char HAVEunit[7] = "hour";
+    char WANTunit[7] = "kg";
+    const int expected = 3;
+    const int real = Check_Units_Name(HAVEunit, 4, WANTunit, 2, 1);
+    ASSERT_EQUAL(expected, real);
+}
+
+CTEST(CheckError, t12)
+{
+    char input[20] = "20kg";
+    const int expected = 4;
+    const int real = Check_space(input);
+    ASSERT_EQUAL(expected, real);
+}
+
+CTEST(CheckError, t13)
+{
+    char input[20] = "kg 20";
+    const int expected = 5;
+    const int real = Check_number(input);
     ASSERT_EQUAL(expected, real);
 }
