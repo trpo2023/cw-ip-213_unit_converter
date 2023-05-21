@@ -4,13 +4,16 @@ all: bin/units
 
 test: bin/test
 
-bin/units: obj/main.o obj/conversion.o
+bin/units: obj/main.o obj/conversion.o obj/Check_Error.o
 	g++ $(CFLAGS) -o $@ $^
 
 obj/main.o: src/units/main.cpp
 	g++ -c $(CFLAGS) $< -o $@ -I src/lib
 
 obj/conversion.o: src/lib/conversion.cpp
+	g++ -c $(CFLAGS) $< -o $@
+
+obj/Check_Error.o: src/lib/Check_Error.cpp
 	g++ -c $(CFLAGS) $< -o $@
 
 .PHONY: clean
