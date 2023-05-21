@@ -40,9 +40,11 @@ int main()
         for (int i = 1; WANTunit[i] != '\0'; i++)
             uWLength++;
 
-        result = Convert(HAVEunit, uHLength, WANTunit, uWLength, result);
-        Print_Error(Check_Units_Name(
-                HAVEunit, uHLength, WANTunit, uWLength, result));
+        if (Check_Units_Name(HAVEunit, uHLength, WANTunit, uWLength, result))
+            Print_Error(Check_Units_Name(
+                    HAVEunit, uHLength, WANTunit, uWLength, result));
+        else
+            result = Convert(HAVEunit, uHLength, WANTunit, uWLength, result);
         printf("\t* %f\n", result);
         for (int i = 0; i < 7; i++) {
             HAVEunit[i] = ' ';
