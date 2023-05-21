@@ -1,9 +1,6 @@
 #include <stdio.h>
-#include <string>
 #include <string.h>
 #include <stdlib.h>
-#include <cctype>
-#include <iostream>
 #include <conversion.h>
 #include <Check_Error.h>
 #include <Print_Error.h>
